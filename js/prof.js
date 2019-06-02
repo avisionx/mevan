@@ -50,6 +50,14 @@ function openModal(profId) {
       $("#profComments").html($("#profComments").html() + s);
     }
 
+    $('#commentForm').html('<label class="sr-only" for="inlineFormInputName2">Comment</label><input type="text" class="form-control mb-2 mr-sm-2" style="width: 85%" id="submitThisComment" placeholder="Comment"><button type="submit" class="btn btn-primary mb-2 ml-auto shadow-none" onclick="submitComment(\'' + profId + '\')">Submit</button>')
+
   });
+
+}
+
+function submitComment(profId) {
+
+  console.log($('#submitThisComment').val());
 
 }
