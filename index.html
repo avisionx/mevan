@@ -16,15 +16,29 @@
 
 	</head>
 		
-	<body>
+	<body style="width: 100vw; height: 100vh; overflow: hidden; background: linear-gradient(to right, #8e9eab, #eef2f3); ">
 
-		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+		<nav class="navbar navbar-expand-sm navbar-light bg-light" style="z-index: 999">
 			<div class="container">	
 				<a class="navbar-brand order-1" href="./index.html"><img src="./img/logo/logosn.png" class="img-fluid" alt="Maven"></a>
 				<button class="btn btn-primary btn-sm my-2 my-sm-0 shadow-none order-3" onClick="login(event);" id="signInBtn">Google SignIn</button>
 				<button class="btn btn-primary btn-sm my-2 my-sm-0 shadow-none order-3 d-none" onClick="logout(event);" id="signOutBtn">Logout</button>				
 			</div>
 		</nav>
+
+		<div class="container-fluid" style="height: 100vh; width: 100vw; transform: translateY(-10%);">
+			<div class="col h-100 d-flex align-items-center justify-content-center">
+				<div class="col text-center">
+					<p class="mb-1"><b>We present you</b></p>
+					<h1 class="display-3 font-weight-bold text-dark">Mevan</h1>
+					<p class="lead small">With a wide choice of courses taught by a variety of experienced faculty, Mevan helps you achieve <br>	 whatever you aspire and so much more.</p>
+					<br>
+					<h5 class="mb-md-4 mt-md-5">Features</h5>
+					<p class="text-secondary text-center"><i class="fas fa-check" aria-hidden="true"></i> Track Course Progress <br class="d-md-none"><i class="fas fa-check pl-md-5" aria-hidden="true"></i> Check Hours Invested <br class="d-md-none"><br class="d-none d-md-inline"><br class="d-none d-md-inline"><i class="fas fa-check pl-md-5" aria-hidden="true"></i> Post Doubts <br class="d-md-none"><i class="fas fa-check pl-md-5" aria-hidden="true"></i> Download Course Material <br class="d-md-none"><i class="fas fa-check pl-md-5" aria-hidden="true"></i>  Upload Solutions<br class="d-md-none"><br class="d-none d-md-inline"><br class="d-none d-md-inline"><i class="fas fa-check pl-md-5" aria-hidden="true"></i> Give Feedback</p>
+				</div>
+
+			</div>
+		</div>
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
