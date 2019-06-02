@@ -35,8 +35,6 @@ function openModal(profId) {
   docRef.get().then(function(doc) { 
     
     data = doc.data();
-    
-    console.log(data);
 
     $('#profImg').attr('src', data.image)
     $('#profName').html(data.name)
@@ -46,6 +44,11 @@ function openModal(profId) {
     $('#profOffice').html(data.office)
     $('#profEdu').html(data.education)
     $('#profInt').html(data.interests)
+
+    for(var i = 0; i < data.comments.length; i++){
+      s = '<li class="list-group-item border-0 pl-0 py-1 text-secondary" style="font-size:15px;"><i class="fa fa-comment" aria-hidden="true"></i> ' + data.comments[i] + '.</li>';
+      $("#profComments").html($("#profComments").html() + s);
+    }
 
   });
 
