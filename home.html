@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+	
+	<head>
+		
+		<title>Mevan</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+
+		<link rel="icon" href="./img/favicon.ico">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./css/main.css">
+		
+
+	</head>
+		
+	<body>
+
+		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			<div class="container">	
+				<a class="navbar-brand order-1" href="#"><img src="./img/logo/logosn.png" class="img-fluid" alt="Maven"></a>
+				<button class="btn btn-primary btn-sm my-2 my-sm-0 shadow-none order-2 order-md-3" onClick="login(event);" id="signInBtn">Google SignIn</button>
+				<button class="btn btn-primary btn-sm my-2 my-sm-0 shadow-none order-2 order-md-3 d-none" onClick="logout(event);" id="signOutBtn">Logout</button>				
+				<div class="collapse navbar-collapse order-3 order-md-2" id="collapsibleNavId">
+					<ul class="navbar-nav ml-auto mt-2 mt-lg-0 mr-0 mr-lg-4">
+						<li class="nav-item">
+							<a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Courses</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="./courses.html">All Courses</a>
+								<a class="dropdown-item" href="./my-courses.html">Ongoing</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./all-prof.html"><i class="fa fa-user-secret" aria-hidden="true"></i> Professors</a>
+						</li>
+					</ul>
+				</div>
+
+				<button class="navbar-toggler d-lg-none border-0 shadow-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon border-0 shadow-none"></span>
+				</button>
+			</div>
+		</nav>
+
+		<div id="loader" class="bg-dark" style="position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: 9">
+			<div style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);">
+				<i class="fas fa-cog display-3 text-white rotateIn infinite animated" aria-hidden="true"></i>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<div class="row mt-5">
+				<div class="col-12 col-md-4">
+					<div class="card w-100">
+						<img class="card-img-top img-fluid px-3 pt-3" src="./img/placeholder.svg" alt="Card image cap" id="userImage">
+						<div class="card-body">
+							<h5 class="card-title mb-2" id="userName">Anonymous <span class="font-weight-light small text-secondary">(student)</span> </h5>
+							<p class="mb-0 text-success small">Current GPA: <span id="usergpa"></span></p>
+							<p class="card-text" id="userDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua.</p>
+							<a href="./my-courses.html" class="btn btn-primary shadow-none">My Courses</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-8 mt-4 mt-md-0 d-flex align-items-center">
+					<div class="d-inline w-100">
+						<div class="row">
+							<div class="col">
+								<h5 class="mt-0">Performance Analysis</h5>
+							</div>
+							<div class="col-auto">
+								<p class="text-center text-secondary lead small mt-0">Marks are out of 100</p>
+							</div>
+						</div>
+						<div id="courseChart" height="300px"></div>
+						<div class="row mt-3">
+							<div class="col-3 ml-3 d-flex align-items-center">
+								<span class="badge badge-pill badge-danger">&nbsp;</span><span class="pl-2 pt-1 text-danger" id="courseCode_1">#cse123</span>
+							</div>
+							<div class="col-3 d-flex align-items-center">
+								<span class="badge badge-pill badge-warning">&nbsp;</span><span class="pl-2 pt-1 text-warning" id="courseCode_2">#cse123</span>
+							</div>
+							<div class="col-3 d-flex align-items-center">
+								<span class="badge badge-pill badge-info">&nbsp;</span><span class="pl-2 pt-1 text-info" id="courseCode_3">#cse123</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col">
+					<h3 class="text-center mb-4">Progress Report</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-4">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1" id="courseName1">Communication Skills</h5>
+							<p class="small lead text-secondary mb-3" id="courseCode1">#cse234</p>
+							<div class="progress" style="height: 0.5rem">
+							  <div class="progress-bar bg-danger small" role="progressbar" style="width: 10%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="courseBar1"></div>
+							</div>
+							<div class="row">
+								<div class="col small lead text-secondary mt-2 mb-0">Progress</div>	
+								<div class="col small lead text-danger text-right mt-2 mb-0" id="courseSco1">20% Complete</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-4 mt-3 mt-md-0">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1" id="courseName2">Communication Skills</h5>
+							<p class="small lead text-secondary mb-3" id="courseCode2">#cse234</p>
+							<div class="progress" style="height: 0.5rem">
+							  <div class="progress-bar bg-warning small" role="progressbar" style="width: 10%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="courseBar2"></div>
+							</div>
+							<div class="row">
+								<div class="col small lead text-secondary mt-2 mb-0">Progress</div>	
+								<div class="col small lead text-warning text-right mt-2 mb-0" id="courseSco2">20% Complete</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-4 mt-3 mt-md-0">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1" id="courseName3">Communication Skills</h5>
+							<p class="small lead text-secondary mb-3" id="courseCode3">#cse234</p>
+							<div class="progress" style="height: 0.5rem">
+							  <div class="progress-bar bg-info small" role="progressbar" style="width: 10%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="courseBar3"></div>
+							</div>
+							<div class="row">
+								<div class="col small lead text-secondary mt-2 mb-0">Progress</div>	
+								<div class="col small lead text-info text-right mt-2 mb-0" id="courseSco3">20% Complete</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mt-5">
+				<div class="col">
+					<h3 class="text-center mb-4">Learner Stats</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-3">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Hours Invested</h5>
+							<div class="row">
+								<div class="col text-primary mt-2 mb-0">
+									<i class="fas fa-clock h1" aria-hidden="true"></i>
+								</div>	
+								<div class="col text-primary text-right mt-2 mb-0 d-flex align-items-center">
+									<p id="hrsInvested" class="mb-0 w-100 h4">24hrs</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-3 mt-3 mt-md-0">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Courses Completed</h5>
+							<div class="row">
+								<div class="col text-warning mt-2 mb-0">
+									<i class="fas fa-check h1" aria-hidden="true"></i>
+								</div>	
+								<div class="col text-warning text-right mt-2 mb-0 d-flex align-items-center">
+									<p id="courseCompleted" class="mb-0 w-100 h4">2</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-3 mt-3 mt-md-0">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Ongoing Courses</h5>
+							<div class="row">
+								<div class="col text-info mt-2 mb-0">
+									<i class="fas fa-book h1" aria-hidden="true"></i>
+								</div>	
+								<div class="col text-info text-right mt-2 mb-0 d-flex align-items-center">
+									<p id="ongoingCourses" class="mb-0 w-100 h4">3</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-3 mt-3 mt-md-0">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-1">Course Backlog</h5>
+							<div class="row">
+								<div class="col text-danger mt-2 mb-0">
+									<i class="fas fa-level-down-alt h1"></i>
+								</div>	
+								<div class="col text-danger text-right mt-2 mb-0 d-flex align-items-center">
+									<p id="backlog" class="mb-0 w-100 h4">1%</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<br>
+		</div>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://kit.fontawesome.com/62166acfbe.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>	
+		<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+		<script src="./js/app.js"></script>
+		<script src="./js/home.js"></script>
+		
+		<script type="text/javascript">
+			var curUser = null;
+			firebase.auth().onAuthStateChanged(function (user) {
+				if (user) {
+					curUser = user;
+					$('#signInBtn').addClass('d-none');
+					$('#signOutBtn').removeClass('d-none');
+					populateData(user);
+				} 
+				else {
+					setTimeout(() => {
+						if(!curUser) {
+							document.location.href = "./index.html";
+						}
+					}, 3000);
+				}
+			});
+		</script>
+	</body>
+
+</html>
